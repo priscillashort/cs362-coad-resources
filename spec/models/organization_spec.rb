@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
+  it('exists') do
+    Organization.new
+  end
+
   describe 'relationships' do
     it { should have_many(:users) }
     it { should have_many(:tickets) }

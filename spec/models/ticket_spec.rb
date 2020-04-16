@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
+  it('exists') do
+    Ticket.new
+  end
+
   describe 'relationships' do
     it { should belong_to(:region) }
   end
