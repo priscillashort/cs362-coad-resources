@@ -8,6 +8,8 @@ RSpec.describe Ticket, type: :model do
 
   describe 'relationships' do
     it { should belong_to(:region) }
+    it { should belong_to(:resource_category) }
+    it { should belong_to(:organization) }
   end
 
   #This is an alternate syntax for the same test
