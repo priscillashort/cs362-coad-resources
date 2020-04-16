@@ -6,6 +6,11 @@ RSpec.describe Ticket, type: :model do
     Ticket.new
   end
 
+  it 'has a string representation that is the name' do
+    ticket = Ticket.new(name: 'FAKE')
+    expect(ticket.to_s).to eq('FAKE')
+  end
+
   describe 'relationships' do
     it { should belong_to(:region) }
     it { should belong_to(:resource_category) }

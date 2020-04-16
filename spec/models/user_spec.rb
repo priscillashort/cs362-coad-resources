@@ -4,6 +4,11 @@ RSpec.describe User, type: :model do
 
   it('exists') do
     User.new
+	end
+	
+  it 'has a string representation that is the email' do
+    user = User.new(email: 'FAKE@FAKE.com')
+    expect(user.to_s).to eq('FAKE@FAKE.com')
   end
 
   describe 'relationships' do
