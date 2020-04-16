@@ -6,9 +6,9 @@ RSpec.describe Ticket, type: :model do
     Ticket.new
   end
 
-  it 'has a string representation that is the name' do
-    ticket = Ticket.new(name: 'FAKE')
-    expect(ticket.to_s).to eq('FAKE')
+  it 'has a string representation that is "Ticket id"' do
+    ticket = Ticket.new(id: 10)
+    expect(ticket.to_s).to eq('Ticket 10')
   end
 
   describe 'relationships' do
