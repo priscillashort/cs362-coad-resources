@@ -11,6 +11,24 @@ RSpec.describe Organization, type: :model do
     expect(organization.to_s).to eq('FAKE')
   end
 
+  describe 'attributes' do
+    let (:organization){ Organization.new }
+    specify{ expect(organization).to respond_to(:name) }
+    specify{ expect(organization).to respond_to(:status) }
+    specify{ expect(organization).to respond_to(:phone) }
+    specify{ expect(organization).to respond_to(:email) }
+    specify{ expect(organization).to respond_to(:description) }
+    specify{ expect(organization).to respond_to(:rejection_reason) }
+    specify{ expect(organization).to respond_to(:created_at) }
+    specify{ expect(organization).to respond_to(:updated_at) }
+    specify{ expect(organization).to respond_to(:liability_insurance) }
+    specify{ expect(organization).to respond_to(:primary_name) }
+    specify{ expect(organization).to respond_to(:secondary_name) }
+    specify{ expect(organization).to respond_to(:secondary_phone) }
+    specify{ expect(organization).to respond_to(:title) }
+    specify{ expect(organization).to respond_to(:transportation) }
+  end
+
   describe 'relationships' do
     it { should have_many(:users) }
     it { should have_many(:tickets) }
