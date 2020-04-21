@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-	it('exists') do
-    ResourceCategory.new
-	end
-
   it 'has a string representation that is the name' do
     resourceCategory = ResourceCategory.new(name: 'FAKE')
     expect(resourceCategory.to_s).to eq('FAKE')
