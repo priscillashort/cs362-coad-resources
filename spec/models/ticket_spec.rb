@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
-  it 'has a string representation that is "Ticket id"' do
-    ticket = Ticket.new(id: 10)
-    expect(ticket.to_s).to eq('Ticket 10')
-  end
-
   describe 'attributes' do
     let (:ticket){ Ticket.new }
     specify{ expect(ticket).to respond_to(:name) }
@@ -25,6 +20,14 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:region) }
     it { should belong_to(:resource_category) }
     it { should belong_to(:organization) }
+  end
+
+  describe '#to_s' do
+    it 'has a string representation that is "Ticket id"' do
+      expected_name = 'Ticket 10'
+      ticket = Ticket.new(id: 10)
+      expect(ticket.to_s).to eq(expected_name)
+    end
   end
 
 end

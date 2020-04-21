@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-  it 'has a string representation that is the name' do
-    organization = Organization.new(name: 'FAKE')
-    expect(organization.to_s).to eq('FAKE')
-  end
-
   describe 'attributes' do
     let (:organization){ Organization.new }
     specify{ expect(organization).to respond_to(:name) }
@@ -29,6 +24,14 @@ RSpec.describe Organization, type: :model do
     it { should have_many(:users) }
     it { should have_many(:tickets) }
     it { should have_and_belong_to_many(:resource_categories) }
+  end
+
+  describe '#to_s' do
+    it 'has a string representation that is the name' do
+      expected_name = 'FAKE'
+      organization = Organization.new(name: expected_name)
+      expect(organization.to_s).to eq(expected_name)
+    end
   end
 
 end

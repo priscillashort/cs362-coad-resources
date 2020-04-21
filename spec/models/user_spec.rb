@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  it 'has a string representation that is the email' do
-    user = User.new(email: 'FAKE@FAKE.com')
-    expect(user.to_s).to eq('FAKE@FAKE.com')
-  end
-
   describe 'attributes' do
     let (:user){ User.new }
     specify{ expect(user).to respond_to(:email) }
@@ -28,4 +23,12 @@ RSpec.describe User, type: :model do
     it { should belong_to(:organization) }
   end
     
+  describe '#to_s' do
+    it 'has a string representation that is the email' do
+      expected_email = 'FAKE@FAKE.com'
+      user = User.new(email: expected_email)
+      expect(user.to_s).to eq(expected_email)
+    end
+  end
+
 end
