@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 
+  let (:region){ Region.new(name: 'FAKE') }
+
   describe 'attributes' do
-    let (:region){ Region.new }
     specify{ expect(region).to respond_to(:name) }
     specify{ expect(region).to respond_to(:created_at) }
     specify{ expect(region).to respond_to(:updated_at) }
@@ -13,26 +14,37 @@ RSpec.describe Region, type: :model do
     it { should have_many(:tickets) }
   end
 
-  #describe 'validations' do
-    #it 'is not valid without a name' do
-
-    #end
-  #end
-
-  #Member function
-  describe '#to_s' do
-    it 'has a string representation that is the name' do
-      expected_name = 'FAKE'
-      region = Region.new(name: expected_name)
-      expect(region.to_s).to eq(expected_name)
+  describe 'validations' do
+    #it { should validate_presence_of(:name) }
+    it 'validates name' do
+      expect(region).to validate_presence_of(:name)
+    end
+    it 'validates length of name' do
+      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+    end
+    it 'validates uniqueness of name' do
+      expect(region).to validate_uniqueness_of(:name).case_insensitive
     end
   end
 
-  #Class function
-  #describe '::unspecified' do
-    #itx 'TODO' do
-      #pending
-    #end
-  #end
+  describe '#to_s' do
+    it 'has a string representation that is the name' do
+      expect(region.to_s).to eq('FAKE')
+    end
+  end
+
+  describe '::unspecified' do
+    it 'creates a new Unspecified region when one does not exist' do
+      expect(Region.where(name: 'Unspecified')).to be_empty
+      expect{ Region.unspecified }.to change { Region.count }.by(1)
+    end
+    it 'does not create a new Unspecified region when one already exists' do
+      Region.create(name: 'Unspecified')
+      expect{ Region.unspecified }.to_not change { Region.count }
+    end
+    it 'returns a region with the name Unspecified' do
+      expect(Region.unspecified.name).to eq('Unspecified')
+    end
+  end
 
 end
