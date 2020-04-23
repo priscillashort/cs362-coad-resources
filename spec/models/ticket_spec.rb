@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
+  let(:ticket){ Ticket.new(id: 10) }
+
   describe 'attributes' do
-    let (:ticket){ Ticket.new }
+    # Test the properties listed on the model
     specify{ expect(ticket).to respond_to(:name) }
     specify{ expect(ticket).to respond_to(:description) }
     specify{ expect(ticket).to respond_to(:phone) }
@@ -22,12 +24,14 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:organization) }
   end
 
+  # Add validation tests
+
   describe '#to_s' do
     it 'has a string representation that is "Ticket id"' do
-      expected_name = 'Ticket 10'
-      ticket = Ticket.new(id: 10)
-      expect(ticket.to_s).to eq(expected_name)
+      expect(ticket.to_s).to eq('Ticket 10')
     end
   end
+
+  # Add class method tests
 
 end

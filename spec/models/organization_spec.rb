@@ -2,16 +2,18 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
+  let(:organization){ Organization.new(name: 'FAKE') }
+
   describe 'attributes' do
-    let (:organization){ Organization.new }
+    # Test the properties listed on the model
     specify{ expect(organization).to respond_to(:name) }
     specify{ expect(organization).to respond_to(:status) }
     specify{ expect(organization).to respond_to(:phone) }
     specify{ expect(organization).to respond_to(:email) }
     specify{ expect(organization).to respond_to(:description) }
     specify{ expect(organization).to respond_to(:rejection_reason) }
-    specify{ expect(organization).to respond_to(:created_at) }
-    specify{ expect(organization).to respond_to(:updated_at) }
+    #specify{ expect(organization).to respond_to(:created_at) }
+    #specify{ expect(organization).to respond_to(:updated_at) }
     specify{ expect(organization).to respond_to(:liability_insurance) }
     specify{ expect(organization).to respond_to(:primary_name) }
     specify{ expect(organization).to respond_to(:secondary_name) }
@@ -27,36 +29,27 @@ RSpec.describe Organization, type: :model do
   end
 
   describe 'validations' do
-    let (:organization){ Organization.new }
-    it 'validates email' do
-      expect(organization).to validate_presence_of(:email)
-    end
-    it 'validates name' do
-      expect(organization).to validate_presence_of(:name)
-    end
-    it 'validates phone' do
-      expect(organization).to validate_presence_of(:phone)
-    end
-    it 'validates status' do
-      expect(organization).to validate_presence_of(:status)
-    end
-    it 'validates primary_name' do
-      expect(organization).to validate_presence_of(:primary_name)
-    end
-    it 'validates secondary_name' do
-      expect(organization).to validate_presence_of(:secondary_name)
-    end
-    it 'validates secondary_phone' do
-      expect(organization).to validate_presence_of(:secondary_phone)
-    end
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:status) }
+    it { should validate_presence_of(:primary_name) }
+    it { should validate_presence_of(:secondary_name) }
+    it { should validate_presence_of(:secondary_phone) }
+    it { should validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create) }
+    #it { should validate_format_of(:email).with(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+    it { should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create) }
+    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should validate_length_of(:description).is_at_most(1020).on(:create) }
   end
 
   describe '#to_s' do
     it 'has a string representation that is the name' do
-      expected_name = 'FAKE'
-      organization = Organization.new(name: expected_name)
-      expect(organization.to_s).to eq(expected_name)
+      expect(organization.to_s).to eq('FAKE')
     end
   end
+
+  # Add class method tests
 
 end
