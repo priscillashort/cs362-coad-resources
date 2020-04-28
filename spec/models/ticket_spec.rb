@@ -4,6 +4,12 @@ RSpec.describe Ticket, type: :model do
 
   let(:ticket){ Ticket.new(id: 10) }
 
+  #let(:ticket){ build_stubbed(:ticket) }
+  #let(:open_ticket){ build_stubbed(:ticket, :open) }
+  #let(:closed_ticket){ build_stubbed(:ticket, :closed) }
+  #let(:open_with_org){ build_stubbed(:ticket, :open, :with_org) }
+  #let(:closed_with_org){ build_stubbed(:ticket, :closed, :with_org) }
+
   describe 'attributes' do
     # Test the properties listed on the model
     specify{ expect(ticket).to respond_to(:name) }
@@ -28,6 +34,16 @@ RSpec.describe Ticket, type: :model do
 
   # Add scope tests
 
+  # describe '#open' do
+  #   it 'gets only open tickets without an organization' do
+  #     open_tickets = Ticket.open
+
+  #     expect(open_tickets).to include(open_ticket)
+  #     #expect(open_tickets).not_to include(closed_ticket)
+  #     expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+  #   end
+  # end
+
   describe '#to_s' do
     it 'has a string representation that is "Ticket id"' do
       expect(ticket.to_s).to eq('Ticket 10')
@@ -40,20 +56,6 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to be_open
     end
   end
-
-  #describe '#open' do
-  #  it 'gets only open tickets without an organization' do
-  #    closed_ticket = Ticket.create(closed: true)
-  #    open_ticket = Ticket.create(closed: false)
-  #    closed_with_org = Ticket.create(closed: true, organization: Organization.new())
-  #    open_with_org = Ticket.create(closed: false, organization: Organization.new())
-
-  #    open_tickets = Ticket.open
-
-  #    expect(open_tickets).to include(open_ticket)
-  #    expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
-  #  end
-  #end
 
   # Add class method tests
 
