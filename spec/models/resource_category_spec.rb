@@ -29,6 +29,20 @@ RSpec.describe ResourceCategory, type: :model do
     end
   end
 
+  describe '::unspecified' do
+    it 'creates a new Unspecified ResourceCategory when one does not exist' do
+      expect(ResourceCategory.where(name: 'Unspecified')).to be_empty
+      expect{ ResourceCategory.unspecified }.to change { ResourceCategory.count }.by(1)
+    end
+    it 'does not create a new Unspecified ResourceCategory when one already exists' do
+      ResourceCategory.create(name: 'Unspecified')
+      expect{ ResourceCategory.unspecified }.to_not change { ResourceCategory.count }
+    end
+    it 'returns a ResourceCategory with the name Unspecified' do
+      expect(ResourceCategory.unspecified.name).to eq('Unspecified')
+    end
+  end
+
   # Add class method tests
 
 end
