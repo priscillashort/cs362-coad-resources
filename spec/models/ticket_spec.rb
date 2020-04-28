@@ -32,6 +32,20 @@ RSpec.describe Ticket, type: :model do
     end
   end
 
+  #describe '#open' do
+  #  it 'gets only open tickets without an organization' do
+  #    closed_ticket = Ticket.create(closed: true)
+  #    open_ticket = Ticket.create(closed: false)
+  #    closed_with_org = Ticket.create(closed: true, organization: Organization.new())
+  #    open_with_org = Ticket.create(closed: false, organization: Organization.new())
+
+  #    open_tickets = Ticket.open
+
+  #    expect(open_tickets).to include(open_ticket)
+  #    expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+  #  end
+  #end
+
   # Add class method tests
 
 end

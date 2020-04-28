@@ -43,6 +43,21 @@ RSpec.describe ResourceCategory, type: :model do
     end
   end
 
-  # Add class method tests
+  describe '#activate' do
+    it 'activates a database record' do
+      rc = ResourceCategory.create(active: false)
+      rc.activate
+      expect(rc).to be_active
+    end
+  end
+
+  describe '#deactivate' do
+    it 'deactivate a database record' do
+      rc = ResourceCategory.create(active: true)
+      rc.deactivate
+      expect(rc).not_to be_active
+      expect(rc).to be_inactive
+    end
+  end
 
 end
