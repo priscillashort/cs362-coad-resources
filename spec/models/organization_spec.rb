@@ -44,6 +44,8 @@ RSpec.describe Organization, type: :model do
     it { should validate_length_of(:description).is_at_most(1020).on(:create) }
   end
 
+  # Add scope tests
+
   describe '#to_s' do
     it 'has a string representation that is the name' do
       expect(organization.to_s).to eq('FAKE')

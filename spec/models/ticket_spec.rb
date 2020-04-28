@@ -26,9 +26,18 @@ RSpec.describe Ticket, type: :model do
 
   # Add validation tests
 
+  # Add scope tests
+
   describe '#to_s' do
     it 'has a string representation that is "Ticket id"' do
       expect(ticket.to_s).to eq('Ticket 10')
+    end
+  end
+
+  describe '#open' do
+    it 'gets the oposite of the closed property' do
+      ticket.closed = false
+      expect(ticket).to be_open
     end
   end
 

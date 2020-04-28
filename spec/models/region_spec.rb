@@ -21,6 +21,8 @@ RSpec.describe Region, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
 
+  # Add scope tests
+
   describe '#to_s' do
     it 'has a string representation that is the name' do
       expect(region.to_s).to eq('FAKE')

@@ -27,6 +27,8 @@ RSpec.describe User, type: :model do
 
   # Add validation tests
     
+  # Add scope tests
+
   describe '#to_s' do
     it 'has a string representation that is the email' do
       expect(user.to_s).to eq('FAKE@FAKE.com')
