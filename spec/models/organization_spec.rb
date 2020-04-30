@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-  let(:organization){ Organization.new(name: 'FAKE') }
+  #let(:organization){ build_stubbed(:organization) }
+  let(:organization){ build(:organization) }
 
   describe 'attributes' do
-    # Test the properties listed on the model
+    # TODO: Test the properties listed on the model
     specify{ expect(organization).to respond_to(:name) }
     specify{ expect(organization).to respond_to(:status) }
     specify{ expect(organization).to respond_to(:phone) }
@@ -44,7 +45,7 @@ RSpec.describe Organization, type: :model do
     it { should validate_length_of(:description).is_at_most(1020).on(:create) }
   end
 
-  # Add scope tests
+  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the name' do
@@ -52,6 +53,6 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-  # Add class method tests
+  # TODO: Add class method tests
 
 end

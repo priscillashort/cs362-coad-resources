@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
+  # TODO: use factories
   let(:ticket){ Ticket.new(id: 10) }
 
   #let(:ticket){ build_stubbed(:ticket) }
@@ -11,7 +12,7 @@ RSpec.describe Ticket, type: :model do
   #let(:closed_with_org){ build_stubbed(:ticket, :closed, :with_org) }
 
   describe 'attributes' do
-    # Test the properties listed on the model
+    # TODO: Test the properties listed on the model
     specify{ expect(ticket).to respond_to(:name) }
     specify{ expect(ticket).to respond_to(:description) }
     specify{ expect(ticket).to respond_to(:phone) }
@@ -30,9 +31,9 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:organization) }
   end
 
-  # Add validation tests
+  # TODO: Add validation tests
 
-  # Add scope tests
+  # TODO: Add scope tests
 
   # describe '#open' do
   #   it 'gets only open tickets without an organization' do
@@ -57,6 +58,6 @@ RSpec.describe Ticket, type: :model do
     end
   end
 
-  # Add class method tests
+  # TODO: Add class method tests
 
 end

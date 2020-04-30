@@ -2,14 +2,17 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-  let(:resourceCategory){ ResourceCategory.new(name: 'FAKE') }
+  # TODO: use factories
+  let(:resourcecategory){ ResourceCategory.new(name: 'FAKE') }
+  #let(:resourceCategory){ build_stubbed(:resourceCategory) }
+  #let(:resourcecategory){ build(:resourcecategory) }
 
   describe 'attributes' do
-    # Test the properties listed on the model
-    specify{ expect(resourceCategory).to respond_to(:name) }
-    specify{ expect(resourceCategory).to respond_to(:created_at) }
-    specify{ expect(resourceCategory).to respond_to(:updated_at) }
-    specify{ expect(resourceCategory).to respond_to(:active) }
+    # TODO: Test the properties listed on the model
+    specify{ expect(resourcecategory).to respond_to(:name) }
+    specify{ expect(resourcecategory).to respond_to(:created_at) }
+    specify{ expect(resourcecategory).to respond_to(:updated_at) }
+    specify{ expect(resourcecategory).to respond_to(:active) }
   end
 
 	describe 'relationships' do
@@ -23,11 +26,11 @@ RSpec.describe ResourceCategory, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
 
-  # Add scope tests
+  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the name' do
-      expect(resourceCategory.to_s).to eq('FAKE')
+      expect(resourcecategory.to_s).to eq('FAKE')
     end
   end
 

@@ -6,7 +6,7 @@ RSpec.describe Region, type: :model do
   let(:region){ build(:region) }
 
   describe 'attributes' do
-    # Test the properties listed on the model
+    # TODO: Test the properties listed on the model
     specify{ expect(region).to respond_to(:name) }
     specify{ expect(region).to respond_to(:created_at) }
     specify{ expect(region).to respond_to(:updated_at) }
@@ -22,7 +22,7 @@ RSpec.describe Region, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
 
-  # Add scope tests
+  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the name' do
@@ -36,7 +36,7 @@ RSpec.describe Region, type: :model do
       expect{ Region.unspecified }.to change { Region.count }.by(1)
     end
     it 'does not create a new Unspecified region when one already exists' do
-      create(:region, :unspecified)
+      create(:unspecified_region)
       expect{ Region.unspecified }.to_not change { Region.count }
     end
     it 'returns a region with the name Unspecified' do

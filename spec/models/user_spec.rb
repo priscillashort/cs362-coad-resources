@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user){ User.new(email: 'FAKE@FAKE.com') }
+  #let(:user){ build_stubbed(:user) }
+  let(:user){ build(:user) }
 
   describe 'attributes' do
-    # Test the properties listed on the model
+    # TODO: Test the properties listed on the model
     specify{ expect(user).to respond_to(:email) }
     specify{ expect(user).to respond_to(:encrypted_password) }
     specify{ expect(user).to respond_to(:reset_password_token) }
@@ -25,16 +26,17 @@ RSpec.describe User, type: :model do
     it { should belong_to(:organization) }
   end
 
-  # Add validation tests
+  # TODO: Add validation tests
     
-  # Add scope tests
+  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the email' do
-      expect(user.to_s).to eq('FAKE@FAKE.com')
+      user = build(:user, email: 'FAKE1@example.com')
+      expect(user.to_s).to eq('FAKE1@example.com')
     end
   end
 
-  # Add class method tests
+  # TODO: Add class method tests
 
 end
