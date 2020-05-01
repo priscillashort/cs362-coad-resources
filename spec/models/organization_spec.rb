@@ -57,7 +57,8 @@ RSpec.describe Organization, type: :model do
   describe 'approve' do
     let(:organization){build_stubbed(:organization, status: :rejected)}
     it 'using approve on an org should approve it' do
-      expect(organization.status).to eq(:approved)
+      organization.approve
+      expect(organization.status).to eq("approved")
     end
   end
 end

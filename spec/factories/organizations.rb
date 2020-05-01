@@ -3,3 +3,4 @@ FactoryBot.define do
 		name { 'FAKE' }
 	end
 end
+
