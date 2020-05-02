@@ -70,4 +70,21 @@ RSpec.describe Organization, type: :model do
     end
   end
 
+  describe 'default status' do
+    let(:organization){build_stubbed(:organization)}
+    it 'if no status, change to default status' do
+      organization.set_default_status
+      expect(organization.status).to eq("submitted")
+    end
+  end
+
+  describe 'default status no override' do
+    let(:organization){build_stubbed(:organization, status: :approved)}
+    it 'set default status keeps the status if one exists' do
+      organization.set_default_status
+      expect(organization.status).to eq("approved")
+    end
+  end
+ 	
+
 end
