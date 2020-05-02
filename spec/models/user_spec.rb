@@ -37,6 +37,19 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # TODO: Add class method tests
+
+  describe '#set_defualt_role'do
+    it 'if no role, it will make it an org' do
+      user = build(:user)
+      user.set_default_role
+      expect(user.role).to eq("organization")
+    end
+
+    it 'if it has role, set default will not override it' do
+      user = build(:user, role: :admin)
+      user.set_default_role
+      expect(user.role).to eq("admin")
+    end
+  end
 
 end

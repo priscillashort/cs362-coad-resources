@@ -65,6 +65,5 @@ RSpec.describe Ticket, type: :model do
     end
   end
 	
-#   TODO: Add class method tests
 
 end
