@@ -58,8 +58,13 @@ RSpec.describe Ticket, type: :model do
     end
   end
   
-  #describe '#captured' do
-   # it 'if it is present it should be true'
-  # TODO: Add class method tests
+  describe '#captured' do
+    let(:ticket){build(:ticket)}
+    it 'if it is present it should be true' do
+      expect(ticket.captured?).to eq(true)
+    end
+  end
+	
+#   TODO: Add class method tests
 
 end
