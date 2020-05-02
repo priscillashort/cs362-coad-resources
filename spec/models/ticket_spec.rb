@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
-  # TODO: use factories
-  let(:ticket){ Ticket.new(id: 10) }
+  let(:ticket){ build(:ticket)}
 
   #let(:ticket){ build_stubbed(:ticket) }
   #let(:open_ticket){ build_stubbed(:ticket, :open) }
@@ -46,6 +45,7 @@ RSpec.describe Ticket, type: :model do
   # end
 
   describe '#to_s' do
+    let(:ticket){ build(:ticket, id: 10)}
     it 'has a string representation that is "Ticket id"' do
       expect(ticket.to_s).to eq('Ticket 10')
     end
@@ -57,7 +57,9 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to be_open
     end
   end
-
+  
+  #describe '#captured' do
+   # it 'if it is present it should be true'
   # TODO: Add class method tests
 
 end

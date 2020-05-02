@@ -53,7 +53,6 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-  # TODO: Add class method tests
   describe 'approve' do
     let(:organization){build_stubbed(:organization, status: :rejected)}
     it 'using approve on an org should approve it' do
