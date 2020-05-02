@@ -61,4 +61,13 @@ RSpec.describe Organization, type: :model do
       expect(organization.status).to eq("approved")
     end
   end
+
+  describe 'reject' do
+    let(:organization){build_stubbed(:organization, status: :approved)}
+    it 'rejecting should mean it is rejected' do
+      organization.reject
+      expect(organization.status).to eq("rejected")
+    end
+  end
+
 end
