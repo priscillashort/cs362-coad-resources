@@ -29,7 +29,15 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:organization) }
   end
 
-  # TODO: Add validation tests
+  describe 'validations' do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:region_id) }
+    it { should validate_presence_of(:resource_category_id) }
+    it { should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create) }
+    it { should validate_length_of(:description).is_at_most(1020).on(:create) }
+    #it { should validate(:phone).to be_phony_plausible }
+  end
 
   # TODO: Add scope tests
 
