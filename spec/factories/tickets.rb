@@ -2,7 +2,10 @@ FactoryBot.define do
 
 	factory :ticket do
 		name { 'FAKE' }
-		organization
+
+		trait :with_org do
+			organization
+		end
 	end
 
 	# factory :ticket do

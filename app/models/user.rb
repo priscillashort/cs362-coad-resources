@@ -1,3 +1,6 @@
+
+# TODO: Add short comment that describes what the class represents
+
 class User < ApplicationRecord
 
   enum role: [:admin, :organization]

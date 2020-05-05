@@ -1,3 +1,6 @@
+
+# TODO: Add short comment that describes what the class represents
+
 class Region < ApplicationRecord
 
   has_many :tickets

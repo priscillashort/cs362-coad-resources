@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
 
   let(:ticket){ build(:ticket)}
+  let(:ticket_with_org){ build(:ticket, :with_org)}
+  #let(:organization{ build(:organization) })
 
   #let(:ticket){ build_stubbed(:ticket) }
   #let(:open_ticket){ build_stubbed(:ticket, :open) }
@@ -66,11 +68,13 @@ RSpec.describe Ticket, type: :model do
   end
   
   describe '#captured' do
-    let(:ticket){build(:ticket)}
-    it 'if it is present it should be true' do
-      expect(ticket.captured?).to eq(true)
+    it 'ticket is not captured by default' do
+      expect(ticket).to_not be_captured
+    end
+
+    it 'ticket is captured if it has an organization' do
+      expect(ticket_with_org).to be_captured
     end
   end
 	
-
 end
