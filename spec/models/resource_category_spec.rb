@@ -8,7 +8,6 @@ RSpec.describe ResourceCategory, type: :model do
   #let(:resourcecategory){ build(:resourcecategory) }
 
   describe 'attributes' do
-    # TODO: Test the properties listed on the model
     specify{ expect(resourcecategory).to respond_to(:name) }
     specify{ expect(resourcecategory).to respond_to(:created_at) }
     specify{ expect(resourcecategory).to respond_to(:updated_at) }

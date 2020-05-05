@@ -6,7 +6,14 @@ RSpec.describe Organization, type: :model do
   let(:organization){ build(:organization) }
 
   describe 'attributes' do
-    # TODO: Test the properties listed on the model
+    specify{ expect(organization).to respond_to(:agreement_one) }
+    specify{ expect(organization).to respond_to(:agreement_two) }
+    specify{ expect(organization).to respond_to(:agreement_three) }
+    specify{ expect(organization).to respond_to(:agreement_four) }
+    specify{ expect(organization).to respond_to(:agreement_five) }
+    specify{ expect(organization).to respond_to(:agreement_six) }
+    specify{ expect(organization).to respond_to(:agreement_seven) }
+    specify{ expect(organization).to respond_to(:agreement_eight) }
     specify{ expect(organization).to respond_to(:name) }
     specify{ expect(organization).to respond_to(:status) }
     specify{ expect(organization).to respond_to(:phone) }

@@ -6,7 +6,6 @@ RSpec.describe Region, type: :model do
   let(:region){ build(:region) }
 
   describe 'attributes' do
-    # TODO: Test the properties listed on the model
     specify{ expect(region).to respond_to(:name) }
     specify{ expect(region).to respond_to(:created_at) }
     specify{ expect(region).to respond_to(:updated_at) }

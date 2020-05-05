@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   let(:user){ build(:user) }
 
   describe 'attributes' do
-    # TODO: Test the properties listed on the model
     specify{ expect(user).to respond_to(:email) }
     specify{ expect(user).to respond_to(:encrypted_password) }
     specify{ expect(user).to respond_to(:reset_password_token) }
