@@ -10,7 +10,7 @@ FactoryBot.define do
 
 		trait :organization_approved do
 			role { 'organization' }
-			organization
+			#organization
 			#organization_id { create(:organization, :aproved true) }
 		end
 
