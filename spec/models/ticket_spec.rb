@@ -7,8 +7,8 @@ RSpec.describe Ticket, type: :model do
   #let(:organization{ build(:organization) })
 
   #let(:ticket){ build_stubbed(:ticket) }
-  #let(:open_ticket){ build_stubbed(:ticket, :open) }
-  #let(:closed_ticket){ build_stubbed(:ticket, :closed) }
+  # let(:open_ticket){ build_stubbed(:ticket, :open) }
+  # let(:closed_ticket){ build_stubbed(:ticket, :closed) }
   #let(:open_with_org){ build_stubbed(:ticket, :open, :with_org) }
   #let(:closed_with_org){ build_stubbed(:ticket, :closed, :with_org) }
 
@@ -44,7 +44,33 @@ RSpec.describe Ticket, type: :model do
   # TODO: Add scope tests
 
   # describe '#open' do
+  #   let(:open_ticket){ build_stubbed(:ticket, :open) }
+  #   let(:closed_ticket){ build_stubbed(:ticket, :closed) }
   #   it 'gets only open tickets without an organization' do
+  #     open_tickets = Ticket.open
+
+  #     expect(open_tickets).to include(open_ticket)
+  #     #expect(open_tickets).not_to include(closed_ticket)
+  #     expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+  #   end
+  # end
+
+  # describe '#open' do
+  #   it 'gets only open tickets without an organization' do
+  #     open_tickets = Ticket.open
+
+  #     expect(open_tickets).to include(open_ticket)
+  #     #expect(open_tickets).not_to include(closed_ticket)
+  #     expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+  #   end
+
+  #   it 'gets only open tickets with a particular organization' do
+  #     ticket = Ticket.organization(1)
+  #     expect(ticket).to eq(ticket_with_org)
+  #     expect(ticket).to eq(closed_ticket_with_org)
+
+  #     ticket = Ticket.organization
+      
   #     open_tickets = Ticket.open
 
   #     expect(open_tickets).to include(open_ticket)
