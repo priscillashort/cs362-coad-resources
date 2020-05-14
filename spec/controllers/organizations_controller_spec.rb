@@ -19,16 +19,15 @@ RSpec.describe OrganizationsController, type: :controller do
 			specify { expect(get(:show, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
 		end
 
-		# describe 'GET #edit' do
-		# 	specify { expect(get(:edit)).to redirect_to(new_user_session_path)}
-		# end
+		describe 'GET #edit' do
+			specify { expect(get(:edit, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
+		end
 
-		# describe 'PATCH #update' do
-		# 	specify { expect(patch(:update)).to redirect_to(new_user_session_path)}
-		# end
+		describe 'PATCH #update' do
+			specify { expect(patch(:update, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
+		end
 
 		describe 'DELETE #destroy' do
-			#specify { expect(delete(:destroy, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
 			specify { expect(post(:reject, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
 		end
 	end
