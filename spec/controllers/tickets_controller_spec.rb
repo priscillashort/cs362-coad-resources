@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe TicketsController, type: :controller do
 
-	# context 'As a public user' do
+	context 'As a public user' do
 	# 	describe 'GET #index' do
 	# 		specify { expect(get(:index)).to redirect_to(new_user_session_path)}
 	# 	end
 
-	# 	describe 'POST #create' do
-	# 		specify { expect(post(:create)).to redirect_to(new_user_session_path)}
-	# 	end
+		describe 'POST #create' do
+			specify { expect(post(:create, params: { ticket: attributes_for(:ticket)})).to be_successful}
+		end
 
 	# 	describe 'GET #new' do
 	# 		specify { expect(get(:new)).to redirect_to(new_user_session_path)}
@@ -48,6 +48,6 @@ RSpec.describe TicketsController, type: :controller do
 	# 	describe 'GET #index' do
 	# 		specify { expect(get(:index)).to be_successful }
 	# 	end
-	# end
+	end
 
 end
