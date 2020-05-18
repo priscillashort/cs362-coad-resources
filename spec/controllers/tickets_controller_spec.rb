@@ -11,9 +11,9 @@ RSpec.describe TicketsController, type: :controller do
 			specify { expect(post(:create, params: { ticket: attributes_for(:ticket)})).to be_successful}
 		end
 
-	# 	describe 'GET #new' do
-	# 		specify { expect(get(:new)).to redirect_to(new_user_session_path)}
-	# 	end
+		describe 'GET #new' do
+			specify { expect(get(:new)).to be_successful}
+		end
 
 	# 	describe 'GET #show' do
 	# 		specify { expect(get(:show, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
