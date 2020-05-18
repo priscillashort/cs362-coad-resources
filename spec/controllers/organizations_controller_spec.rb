@@ -60,16 +60,16 @@ RSpec.describe OrganizationsController, type: :controller do
 		# 	)).to redirect_to(organization_application_submitted_path)}
 		# end
 
-		# describe 'GET #new' do
-		# 	specify { expect(get(:new)).to redirect_to(new_user_session_path)}
-		# end
+		describe 'GET #new' do
+			specify { expect(get(:new)).to be_successful}
+		end
 
-		# describe 'GET #show' do
-		# 	specify { expect(get(:show, params: { id:'FAKE' })).to be_successful}
-		# end
+		#describe 'GET #show' do
+		 	#specify { expect(get(:show, params: { id:'FAKE' })).to be_successful}
+		#end
 
 		# describe 'GET #edit' do
-		# 	specify { expect(get(:edit, params: { id:'FAKE' })).to redirect_to(new_user_session_path)}
+		# 	specify { expect(get(:edit, params: { id:'FAKE' })).to be_successful}
 		# end
 
 		# describe 'PATCH #update' do
