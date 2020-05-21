@@ -2,9 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a Ticket', type: :feature do
 
-	#These should only test unhappy paths because the happy
-	#paths are tested by the unit tests
-
 	before :each do
 		#@region = create(:region)
 		#@resource_category = create(:recource_category)
