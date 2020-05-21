@@ -2,32 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Deleting a Ticket', type: :feature do
 
-	# before :each do
-	# 	@user = create(:user, :admin)
-
-	# 	visit new_ticket_path
-	# end
-
-	# it 'displays a success message' do 
-	# 	fill_in 'Full Name', with: 'Fake Name'
-	# 	fill_in 'Phone Number', with: '5555555555'
-	# 	select @region.name, from: 'Region'
-	# 	select @resource_category.name, from: 'Resource Category'
-	# 	fill_in 'Description', with: 'Fake'
-	# 	click_on 'Send this help request'
-	# 	expect(page).to have_content('Ticket Submitted')
-	# end
-
-	# it 'displays a error message when phone is invalid' do 
-	# 	fill_in 'Full Name', with: 'Fake Name'
-	# 	fill_in 'Phone Number', with: 'INVALID'
-	# 	select @region.name, from: 'Region'
-	# 	select @resource_category.name, from: 'Resource Category'
-	# 	fill_in 'Description', with: 'Fake'
-	# 	click_on 'Send this help request'
-	# 	expect(page).to have_content("error")
-	# end
-
 end
 
 
