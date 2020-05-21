@@ -32,41 +32,39 @@ RSpec.describe OrganizationsController, type: :controller do
 		end
 	end
 
-	context 'As an organization user' do
+	class FakeMailer
+		def new_organization_application
+			false
+		end
+	end
+
+	context 'Organization user' do
 		let(:user) { create(:user) }
 		before(:each) { sign_in(user) }
 
-		#describe 'GET #index' do
-		#	specify { expect(get(:index)).to be_successful }
-		#end
+		# let(:admin_user) { create(:user, :admin) }
+		# before(:each) { sign_in(admin_user) }
 
-		describe 'POST #create' do
-			specify { expect(post(:create, params: { organization: attributes_for(:organization) } )).to be_successful }
-
+		describe 'GET #index' do
+			specify { expect(get(:index)).to be_successful }
 		end
 
-		# describe 'POST #create' do
-		# 	specify { expect(post(:create, params: {
-		# 		name: 'FAKE',
-		# 		phone: '5555555555',new
-		# 		email: 'FAKE@example.com',
-		# 		# :description,
-		# 		# :liability_insurance,
-		# 		# :primary_name,
-		# 		# :secondary_name,
-		# 		# :secondary_phone,
-		# 		# :title 
-		# 	}
-		# 	)).to redirect_to(organization_application_submitted_path)}
-		# end
+		describe 'POST #create' do
+			specify { expect(post(:create, params: { organization: {name: 'Fake'} } )).to be_successful }
+
+			it 'redirects to organization_application_submitted_path' do
+				allow(UserMailer).to receive(:with).and_return(FakeMailer.new)
+				expect(post(:create, params: { organization: attributes_for(:organization) } )).to redirect_to(organization_application_submitted_path)
+			end
+		end
 
 		describe 'GET #new' do
 			specify { expect(get(:new)).to be_successful}
 		end
 
-		#describe 'GET #show' do
-		# 	specify { expect(get(:show, params: { id:'FAKE' })).to be_successful}
-		#end
+		# describe 'GET #show' do
+		# 	specify { expect(get(:show, params: { id: user.id })).to be_successful}
+		# end
 
 		#describe 'GET #edit' do
 		#	specify { expect(get(:edit, params: { id:'FAKE' })).to be_successful}
