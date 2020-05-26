@@ -2,17 +2,19 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a Region', type: :feature do
 
-	# let (:admin){User.create(:role = 'admin')}
+	before :each do
+		@admin = create(:user, :admin)
+		log_in_as(@admin)
+		visit new_region_path
+	end
 
-  # context 'As an admin' do
-  #   specify 'I can create a region and see it in the list' do
-	# 		sign_in(admin)
-	# 		visit new_region_path
-	# 		fill_in 'name', with: 'Fake Region'
-	# 		click 'Save'
-	# 		visit regions_both
-	# 		expect(page).to have_content('Fake Region')
-  #   end
-  # end
+  context 'As an admin' do
+    specify 'I can create a region and see it in the list' do
+			fill_in 'Name', with: 'Fake Region'
+			click_on 'Add Region'
+			visit regions_path
+			expect(page).to have_content('Fake Region')
+    end
+  end
 
 end

@@ -7,21 +7,17 @@ RSpec.describe 'Creating an Organization Application', type: :feature do
 		visit new_organization_application_path
 	end
 
-# Feature: Organization User Creates an Organization Application
-# As an organization user
-# Given I am on the new application page
-# When I fill in the form
-# And I click submit
-# Then I should see a success message
-
-	# it 'displays a success message when form information is valid' do 
-	# 	fill_in "What is your Organization's email?", with: 'Fake@example.com'
-	# 	# select @region.name, from: 'Region'
-	# 	click_on 'Apply'
-	# 	expect(page).to have_content("success")
-	# end
-
-	#you can use the name attribute when you can't use the label
+	it 'displays a success message when form information is valid' do 
+		create(:user, :admin)
+		fill_in "What is your Organization's email?", with: 'Fake@example.com'
+		fill_in "Organization Name", with: 'FAKE'
+		fill_in "What is your direct phone number? Cell phone is best.", with: '15555555555'
+		fill_in "What is your name? (Last, First)", with: 'FAKE'
+		fill_in "Who may we contact regarding your organization's application if we are unable to reach you?", with: 'FAKE'
+		fill_in "What is a good secondary phone number we may reach your organization at?", with: '15555555556'
+		click_on 'Apply'
+		expect(page).to have_content("Submitted")
+	end
 
 	it 'displays a error message when form information is invalid' do 
 		click_on 'Apply'
