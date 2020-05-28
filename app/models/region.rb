@@ -1,5 +1,5 @@
 
-# TODO: Add short comment that describes what the class represents
+# A region represents an area where tickets are grouped together by their location
 
 class Region < ApplicationRecord
 

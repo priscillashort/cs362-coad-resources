@@ -1,5 +1,5 @@
-
-# TODO: Add short comment that describes what the class represents
+# A resource category represents a category of resources that can have many tickets 
+# and has and belongs to many organizations. These are resources to help resolve tickets.
 
 class ResourceCategory < ApplicationRecord
 

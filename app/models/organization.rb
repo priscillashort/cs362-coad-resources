@@ -1,6 +1,6 @@
 
-# TODO: Add short comment that describes what the class represents
-# an organization is/represents
+# An organization represents a user of the system that can give help to those who put tickets into the 
+# system asking for help. Organizations must apply and be aproved by a system user
 
 class Organization < ApplicationRecord
 

@@ -1,5 +1,5 @@
 
-# TODO: Add short comment that describes what the class represents
+# A ticket represents a request for help and these requests can be fulfilled by approved organizations
 
 class Ticket < ApplicationRecord
 

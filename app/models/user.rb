@@ -1,5 +1,6 @@
 
-# TODO: Add short comment that describes what the class represents
+# A User represents a person who uses the system and has login information.
+# A user can be an organization or an administrator of the system
 
 class User < ApplicationRecord
 
