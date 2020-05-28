@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Region, type: :model do
 
   #let(:region){ build_stubbed(:region) }
-  let(:region){ build(:region) }
+  let(:region){ build(:region, name: 'FAKE') }
 
   describe 'attributes' do
     specify{ expect(region).to respond_to(:name) }

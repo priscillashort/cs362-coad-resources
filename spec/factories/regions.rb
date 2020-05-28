@@ -1,9 +1,10 @@
 FactoryBot.define do
 	#factory :default_region, class: 'Region' do
 	factory :region, class: 'Region' do
-		name { 'FAKE' }
+		#name { 'FAKE' }
+		name
 		#tickets { [build_stubbed(:ticket, :closed), build_stubbed(:ticket, :open)] }
-		tickets { build_list(:ticket, 1) }
+		#tickets { build_list(:ticket, 1) }
 
 		#trait :create_tickets do
 		#	tickets { create_list(:ticket, 1) }

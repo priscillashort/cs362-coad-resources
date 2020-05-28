@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe Organization, type: :model do
 
   #let(:organization){ build_stubbed(:organization) }
-  let(:organization){ build(:organization) }
-
-  # it 'delete me once passing - this is to test accurate organization factory' do
-  #   expect(organization).to be_valid
-  # end
+  let(:organization){ build(:organization, name: 'FAKE') }
 
   describe 'attributes' do
     specify{ expect(organization).to respond_to(:agreement_one) }
