@@ -4,25 +4,18 @@ RSpec.describe Ticket, type: :model do
 
   let(:ticket){ build(:ticket)}
   let(:ticket_with_org){ build(:ticket, :with_org)}
-  #let(:organization{ build(:organization) })
 
-  #let(:ticket){ build_stubbed(:ticket) }
-  # let(:open_ticket){ build_stubbed(:ticket, :open) }
-  # let(:closed_ticket){ build_stubbed(:ticket, :closed) }
-  #let(:open_with_org){ build_stubbed(:ticket, :open, :with_org) }
-  #let(:closed_with_org){ build_stubbed(:ticket, :closed, :with_org) }
+  let(:open_ticket){ create(:ticket, :open) }
+  let(:closed_ticket){ create(:ticket, :closed) }
+  let(:open_with_org){ create(:ticket, :open, :with_org) }
+  let(:closed_with_org){ create(:ticket, :closed, :with_org) }
 
   describe 'attributes' do
     specify{ expect(ticket).to respond_to(:name) }
     specify{ expect(ticket).to respond_to(:description) }
     specify{ expect(ticket).to respond_to(:phone) }
-    specify{ expect(ticket).to respond_to(:organization_id) }
-    specify{ expect(ticket).to respond_to(:created_at) }
-    specify{ expect(ticket).to respond_to(:updated_at) }
     specify{ expect(ticket).to respond_to(:closed) }
     specify{ expect(ticket).to respond_to(:closed_at) }
-    specify{ expect(ticket).to respond_to(:resource_category_id) }
-    specify{ expect(ticket).to respond_to(:region_id) }
   end
 
   describe 'relationships' do
@@ -44,11 +37,6 @@ RSpec.describe Ticket, type: :model do
   # TODO: Add scope tests
 
   describe '#open' do
-    let(:open_ticket){ create(:ticket, :open) }
-    let(:closed_ticket){ create(:ticket, :closed) }
-    let(:open_with_org){ create(:ticket, :open, :with_org) }
-    let(:closed_with_org){ create(:ticket, :closed, :with_org) }
-
     it 'gets only open tickets without an organization' do
       open_tickets = Ticket.open
 

@@ -9,8 +9,6 @@ RSpec.describe ResourceCategory, type: :model do
 
   describe 'attributes' do
     specify{ expect(resourcecategory).to respond_to(:name) }
-    specify{ expect(resourcecategory).to respond_to(:created_at) }
-    specify{ expect(resourcecategory).to respond_to(:updated_at) }
     specify{ expect(resourcecategory).to respond_to(:active) }
   end
 

@@ -7,8 +7,6 @@ RSpec.describe Region, type: :model do
 
   describe 'attributes' do
     specify{ expect(region).to respond_to(:name) }
-    specify{ expect(region).to respond_to(:created_at) }
-    specify{ expect(region).to respond_to(:updated_at) }
   end
 
   describe 'relationships' do
