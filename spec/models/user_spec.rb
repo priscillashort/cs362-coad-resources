@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user){ build(:user) }
+  let(:user){ build(:user, email: 'FAKE1@example.com') }
+  let(:admin){ build(:user, :admin) }
 
   describe 'attributes' do
     specify{ expect(user).to respond_to(:email) }
@@ -22,27 +23,21 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).is_at_least(7).is_at_most(255).on(:create) }
   end
 
-  # TODO: Add scope tests
-
   describe '#to_s' do
     it 'has a string representation that is the email' do
-      user = build(:user, email: 'FAKE1@example.com')
       expect(user.to_s).to eq('FAKE1@example.com')
     end
   end
 
-
   describe '#set_defualt_role'do
     it 'if no role, it will make it an org' do
-      user = build(:user)
       user.set_default_role
       expect(user.role).to eq("organization")
     end
 
     it 'if it has role, set default will not override it' do
-      user = build(:user, role: :admin)
-      user.set_default_role
-      expect(user.role).to eq("admin")
+      admin.set_default_role
+      expect(admin.role).to eq("admin")
     end
   end
 

@@ -9,12 +9,9 @@ FactoryBot.define do
 		#	tickets { create_list(:ticket, 1) }
 		#end
 
-		# trait :unspecified do
-		# 	name { 'Unspecified' }
-		# end
-	end
+		trait :unspecified do
+			name { 'Unspecified' }
+		end
 
-	factory :unspecified_region, class: 'Region' do
-		name { 'Unspecified' }
 	end
 end
