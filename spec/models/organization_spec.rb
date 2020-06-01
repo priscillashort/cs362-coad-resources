@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-  #let(:organization){ build_stubbed(:organization) }
   let(:organization){ build(:organization, name: 'FAKE') }
 
   describe 'attributes' do
@@ -49,8 +48,6 @@ RSpec.describe Organization, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
     it { should validate_length_of(:description).is_at_most(1020).on(:create) }
   end
-
-  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the name' do

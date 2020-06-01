@@ -34,29 +34,62 @@ RSpec.describe Ticket, type: :model do
     #it { should validate(:phone).to be_phony_plausible }
   end
 
-  # TODO: Add scope tests
-
-  describe '#open' do
-    it 'gets only open tickets without an organization' do
-      open_tickets = Ticket.open
-
-      expect(open_tickets).to include(open_ticket)
-      expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+  describe 'scope' do
+    describe '#open' do
+      it 'gets only open tickets without an organization' do
+        open_tickets = Ticket.open
+        expect(open_tickets).to include(open_ticket)
+        expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
+      end
     end
 
-    # it 'gets only open tickets with a particular organization' do
-    #   ticket = Ticket.organization(1)
-    #   expect(ticket).to eq(ticket_with_org)
-    #   expect(ticket).to eq(closed_ticket_with_org)
+    describe '#closed' do
+      it 'gets only closed tickets' do
+        closed_tickets = Ticket.closed
+        expect(closed_tickets).to include(closed_ticket, closed_with_org)
+        expect(closed_tickets).not_to include(open_ticket, open_with_org)
+      end
+    end
 
-    #   ticket = Ticket.organization
-      
-    #   open_tickets = Ticket.open
+    describe '#all_organization' do
+      it 'gets only open tickets with an organization' do
+        all_organization_tickets = Ticket.all_organization
+        expect(all_organization_tickets).to include(open_with_org)
+        expect(all_organization_tickets).not_to include(closed_ticket, closed_with_org, open_ticket)
+      end
+    end
 
-    #   expect(open_tickets).to include(open_ticket)
-    #   #expect(open_tickets).not_to include(closed_ticket)
-    #   expect(open_tickets).not_to include(closed_ticket, open_with_org, closed_with_org)
-    # end
+    describe '#organization' do
+      it 'gets only open tickets with a particular organization' do
+        organization_tickets = Ticket.organization(open_with_org.organization_id)
+        expect(organization_tickets).to include(open_with_org)
+        expect(organization_tickets).not_to include(closed_ticket, closed_with_org, open_ticket)
+      end
+    end
+
+    describe '#closed_organization' do
+      it 'gets only closed tickets with a particular organization' do
+        closed_organization_tickets = Ticket.closed_organization(closed_with_org.organization_id)
+        expect(closed_organization_tickets).to include(closed_with_org)
+        expect(closed_organization_tickets).not_to include(closed_ticket, open_with_org, open_ticket)
+      end
+    end
+
+    describe '#region' do
+      it 'gets only tickets with a particular region' do
+        region_tickets = Ticket.region(open_ticket.region_id)
+        expect(region_tickets).to include(open_ticket)
+        expect(region_tickets).not_to include(closed_ticket, closed_with_org, open_with_org)
+      end
+    end
+
+    describe '#resource_category' do
+      it 'gets only tickets with a particular resource_category' do
+        resource_category_tickets = Ticket.resource_category(open_ticket.resource_category_id)
+        expect(resource_category_tickets).to include(open_ticket)
+        expect(resource_category_tickets).not_to include(closed_ticket, closed_with_org, open_with_org)
+      end
+    end
   end
 
   describe '#to_s' do

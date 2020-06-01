@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-  # TODO: use factories
-  let(:resourcecategory){ ResourceCategory.new(name: 'FAKE') }
-  #let(:resourceCategory){ build_stubbed(:resourceCategory) }
-  #let(:resourcecategory){ build(:resourcecategory) }
+  let(:resourcecategory){ build(:resource_category, name: 'FAKE') }
+
+  let(:active_resourcecategory){ create(:resource_category, :active) }
+  let(:inactive_resourcecategory){ create(:resource_category, :inactive) }
 
   describe 'attributes' do
     specify{ expect(resourcecategory).to respond_to(:name) }
@@ -23,7 +23,21 @@ RSpec.describe ResourceCategory, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
 
-  # TODO: Add scope tests
+  describe '#active' do
+    it 'gets only active resource categories' do
+      active_resource_categories = ResourceCategory.active
+      expect(active_resource_categories).to include(active_resourcecategory)
+      expect(active_resource_categories).not_to include(inactive_resourcecategory)
+    end
+  end
+
+  describe '#inactive' do
+    it 'gets only inactive resource categories' do
+      inactive_resource_categories = ResourceCategory.inactive
+      expect(inactive_resource_categories).to include(inactive_resourcecategory)
+      expect(inactive_resource_categories).not_to include(active_resourcecategory)
+    end
+  end
 
   describe '#to_s' do
     it 'has a string representation that is the name' do

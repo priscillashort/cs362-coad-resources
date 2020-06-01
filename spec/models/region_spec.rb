@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 
-  #let(:region){ build_stubbed(:region) }
   let(:region){ build(:region, name: 'FAKE') }
 
   describe 'attributes' do
@@ -18,8 +17,6 @@ RSpec.describe Region, type: :model do
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create) }
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
-
-  # TODO: Add scope tests
 
   describe '#to_s' do
     it 'has a string representation that is the name' do

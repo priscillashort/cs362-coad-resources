@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  #let(:user){ build_stubbed(:user) }
   let(:user){ build(:user) }
 
   describe 'attributes' do
